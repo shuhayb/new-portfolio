@@ -1,101 +1,128 @@
-import Image from "next/image";
-
-export default function Home() {
+const Home = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+      <aside className="-ml-[8px] mb-16 tracking-tight">
+        <div className="lg:sticky lg:top-20">
+          <nav className="flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative">
+            <div className="flex flex-row space-x-0 pr-10">
+              <a
+                className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
+                href="/"
+              >
+                home
+              </a>
+              <a
+                className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
+                href="/blog"
+              >
+                blog
+              </a>
+              <a
+                className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
+                href="/projects"
+              >
+                projects
+              </a>
+            </div>
+          </nav>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </aside>
+      <section>
+        <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
+          hi, I'm Shuhayb👋
+        </h1>
+        <p className="mb-4">
+          I'm a software engineer who loves to code and has a passion for not
+          building things for the web, but writing quality code. I also love
+          designing new products which changes peoples lives for the better.
+        </p>
+        <div className="my-8">
+          <div>
+            <p className="underline font-black mb-4">Projects</p>
+            <a className="flex flex-row space-y-1 mb-4" href="/blog/something">
+              <div className="w-full flex flex-col space-x-0">
+                <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+                  project 1 - Building a e-commerce site
+                </p>
+                <p className="text-neutral-600 text-xs dark:text-neutral-400 tabular-nums">
+                  typeScript, graphql, css, node.js
+                </p>
+              </div>
+            </a>
+            <a className="flex flex-row space-y-1 mb-4" href="/blog/something">
+              <div className="w-full flex flex-col space-x-0">
+                <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+                  project 2 - Building a e-commerce site
+                </p>
+                <p className="text-neutral-600 text-xs dark:text-neutral-400 tabular-nums">
+                  typeScript, graphql, css, node.js
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <footer className="mb-16">
+        <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
+          <li>
+            <a className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100">
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <p className="ml-2 h-7">linkedin</p>
+            </a>
+          </li>
+          <li>
+            <a className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100">
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <p className="ml-2 h-7">github</p>
+            </a>
+          </li>
+          <li>
+            <a className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100">
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              <p className="ml-2 h-7">email</p>
+            </a>
+          </li>
+        </ul>
+        <p className="mt-8 text-neutral-600 dark:text-neutral-300">
+          © 2024 Shuhayb Miah
+        </p>
       </footer>
     </div>
+    // <div>hello</div>
   );
-}
+};
+
+export default Home;
