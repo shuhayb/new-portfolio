@@ -29,11 +29,11 @@ const Home = () => {
       </aside>
       <section>
         <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-          hi, I'm Shuhayb👋
+          hi, I&apos;m Shuhayb👋
         </h1>
         <p className="mb-4">
-          I'm a software engineer who loves to code and has a passion for not
-          building things for the web, but writing quality code. I also love
+          I&apos;m a software engineer who loves to code and has a passion for
+          not building things for the web, but writing quality code. I also love
           designing new products which changes peoples lives for the better.
         </p>
         <div className="my-8">
