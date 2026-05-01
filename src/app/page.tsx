@@ -5,25 +5,24 @@ export default function Home() {
     <div>
       <Nav />
       <main>
-        <h1>hi, i&apos;m shuhayb.</h1>
+        <h1>hi i&apos;m shuhayb.</h1>
         <p>
-          i&apos;m a software engineer who loves building products and writing
-          quality code. i have a passion for designing things that genuinely
-          change people&apos;s lives for the better.
+          i&apos;m just a software engineer who loves building things for myself and others. 
         </p>
         <p>
-          i&apos;ve been building on the web for a few years now — from full-stack
-          apps to small experiments. i love picking up new tools, shipping fast,
-          and learning from what doesn&apos;t work.
+          i&apos;ve been building for the web for quite a while now and i've recently been building much more with AI. 
         </p>
         <p>
-          some stuff worked out. most of it didn&apos;t. but i learned a lot.
+         i&apos;m going to document everything i&apos;ve done here. Follow along for the journey.
+        </p>
+        <p>
+          some stuff will work out. some stuff won&apos;t. but i i&apos;ll learn a lot.
         </p>
       </main>
       <footer>
         <p>
           p.s: if you wanna contact me ping{" "}
-          <a href="mailto:shuhayb@example.com">shuhayb@example.com</a>
+          <a href="mailto:shuhaybmiah@gmail.com">shuhaybmiah@gmail.com</a>
         </p>
       </footer>
     </div>
