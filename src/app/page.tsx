@@ -10,7 +10,7 @@ export default function Home() {
           i&apos;m just a software engineer who loves building things for myself and others. 
         </p>
         <p>
-          i&apos;ve been building for the web for quite a while now and i've recently been building much more with AI. 
+          i&apos;ve been building for the web for quite a while now and i&apos;ve recently been building much more with AI.
         </p>
         <p>
          i&apos;m going to document everything i&apos;ve done here. Follow along for the journey.
