@@ -393,3 +393,100 @@ footer a:hover {
     display: none;
   }
 }
+
+/* ----- fly-through (scenes) version ----- */
+
+.tjs-root.tjs-fixed {
+  overflow: hidden;
+}
+
+.tjs-root.tjs-fixed canvas {
+  display: block;
+}
+
+.tjs-overlay {
+  width: 100%;
+  pointer-events: none;
+}
+
+.tjs-cap {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+  pointer-events: none;
+}
+
+.tjs-cap-inner {
+  max-width: 560px;
+}
+
+.tjs-cap-title {
+  font-size: clamp(44px, 11vw, 104px);
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  text-shadow: 0 8px 40px rgba(0, 0, 0, 0.55);
+  margin: 0;
+}
+
+.tjs-cap-sub {
+  margin-top: 14px;
+  font-size: clamp(15px, 2.6vw, 20px);
+  letter-spacing: 0.16em;
+  text-transform: lowercase;
+  color: rgba(255, 255, 255, 0.82);
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+.tjs-mini {
+  display: inline-block;
+  margin-top: 22px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tjs-cap-links {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tjs-cap-links a {
+  pointer-events: auto;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 17px;
+}
+
+.tjs-cap-links a:hover {
+  color: #ffffff;
+}
+
+.tjs-cap-contact {
+  margin-top: 22px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.tjs-cap-contact a {
+  pointer-events: auto;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding-bottom: 2px;
+}
+
+.tjs-cap-contact a:hover {
+  border-color: #8b7bff;
+}

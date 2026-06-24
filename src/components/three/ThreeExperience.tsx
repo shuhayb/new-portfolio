@@ -1,141 +1,199 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
-import Background from "./Background";
-import ProjectsCarousel from "./ProjectsCarousel";
-import { SOCIALS, EXPERIENCE_INTRO, CONTENT } from "@/lib/data";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { ScrollControls, Scroll, useScroll } from "@react-three/drei";
+import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
+import * as THREE from "three";
+import { SOCIALS, CONTENT } from "@/lib/data";
+import {
+  Bangladesh,
+  London,
+  Bedroom,
+  PlayStationScene,
+} from "./scenes";
 
-const SECTIONS = [
-  { id: "tjs-home", label: "home" },
-  { id: "tjs-projects", label: "projects" },
-  { id: "tjs-content", label: "content" },
-  { id: "tjs-contact", label: "contact" },
+const THEME = ["#e3a45f", "#717c8a", "#171522", "#07070d"];
+
+const CAM_POINTS: [number, number, number][] = [
+  [0, 1.8, 9],
+  [7, 2.2, -29],
+  [0, 2.6, -73],
+  [5, 2.2, -111],
 ];
 
+const LOOK_POINTS: [number, number, number][] = [
+  [0, 1, 0],
+  [0, 1.5, -40],
+  [0, 2.2, -80],
+  [0, 2.2, -120],
+];
+
+type MouseRef = React.MutableRefObject<{ x: number; y: number }>;
+
+function CameraRig({ mouse }: { mouse: MouseRef }) {
+  const scroll = useScroll();
+  const camCurve = useMemo(
+    () =>
+      new THREE.CatmullRomCurve3(
+        CAM_POINTS.map((p) => new THREE.Vector3(...p))
+      ),
+    []
+  );
+  const lookCurve = useMemo(
+    () =>
+      new THREE.CatmullRomCurve3(
+        LOOK_POINTS.map((p) => new THREE.Vector3(...p))
+      ),
+    []
+  );
+  const target = useMemo(() => new THREE.Vector3(), []);
+  const look = useMemo(() => new THREE.Vector3(), []);
+
+  useFrame((state) => {
+    const o = THREE.MathUtils.clamp(scroll.offset, 0, 1);
+    camCurve.getPoint(o, target);
+    target.x += mouse.current.x * 1.1;
+    target.y += -mouse.current.y * 0.6;
+    state.camera.position.lerp(target, 0.05);
+    lookCurve.getPoint(o, look);
+    state.camera.lookAt(look);
+  });
+
+  return null;
+}
+
+function Atmosphere() {
+  const scroll = useScroll();
+  const { scene } = useThree();
+  const colors = useMemo(() => THEME.map((c) => new THREE.Color(c)), []);
+  const cur = useMemo(() => new THREE.Color(THEME[0]), []);
+
+  useMemo(() => {
+    scene.fog = new THREE.Fog(THEME[0], 5, 36);
+    scene.background = cur;
+  }, [scene, cur]);
+
+  useFrame(() => {
+    const o = scroll.offset * (colors.length - 1);
+    const i = Math.min(Math.floor(o), colors.length - 2);
+    const f = o - i;
+    cur.copy(colors[i]).lerp(colors[i + 1], f);
+    if (scene.fog) (scene.fog as THREE.Fog).color.copy(cur);
+  });
+
+  return null;
+}
+
+function Caption({
+  title,
+  sub,
+  children,
+}: {
+  title: string;
+  sub: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <section className="tjs-cap">
+      <div className="tjs-cap-inner">
+        <h2 className="tjs-cap-title">{title}</h2>
+        <p className="tjs-cap-sub">{sub}</p>
+        {children}
+      </div>
+    </section>
+  );
+}
+
 export default function ThreeExperience() {
-  const rootRef = useRef<HTMLDivElement>(null);
-  const progress = useRef(0);
   const mouse = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-
-    const onScroll = () => {
-      const max = root.scrollHeight - root.clientHeight;
-      progress.current = max > 0 ? root.scrollTop / max : 0;
-    };
-    root.addEventListener("scroll", onScroll, { passive: true });
-
-    const onMouse = (e: PointerEvent) => {
+    const onMove = (e: PointerEvent) => {
       mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
       mouse.current.y = (e.clientY / window.innerHeight) * 2 - 1;
     };
-    window.addEventListener("pointermove", onMouse);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("tjs-in");
-        });
-      },
-      { root, threshold: 0.25 }
-    );
-    root
-      .querySelectorAll(".tjs-reveal")
-      .forEach((el) => observer.observe(el));
-
-    return () => {
-      root.removeEventListener("scroll", onScroll);
-      window.removeEventListener("pointermove", onMouse);
-      observer.disconnect();
-    };
+    window.addEventListener("pointermove", onMove);
+    return () => window.removeEventListener("pointermove", onMove);
   }, []);
 
   return (
-    <div className="tjs-root" ref={rootRef}>
-      <Background progress={progress} mouse={mouse} />
-
+    <div className="tjs-root tjs-fixed">
       <header className="tjs-bar">
         <Link href="/" className="tjs-brand">
           <span className="tjs-star">✦</span> shuhayb
         </Link>
-        <nav className="tjs-bar-nav">
-          {SECTIONS.map((s) => (
-            <a key={s.id} href={`#${s.id}`}>
-              {s.label}
-            </a>
-          ))}
-          <Link href="/" className="tjs-exit">
-            ← standard site
-          </Link>
-        </nav>
+        <Link href="/" className="tjs-exit">
+          ← standard site
+        </Link>
       </header>
 
-      <div className="tjs-content">
-        <section id="tjs-home" className="tjs-section">
-          <div className="tjs-reveal">
-            <p className="tjs-eyebrow">Full Stack Developer &amp; AI Engineer</p>
-            <h1 className="tjs-h1">
-              hi, i&apos;m <span className="tjs-grad">shuhayb</span>.
-            </h1>
-            <p className="tjs-lead">{EXPERIENCE_INTRO}</p>
-            <a href="#tjs-projects" className="tjs-cta">
-              explore my work
-            </a>
-          </div>
-          <span className="tjs-scroll-hint">scroll ↓</span>
-        </section>
+      <Canvas camera={{ position: [0, 1.8, 9], fov: 55 }} dpr={[1, 1.8]}>
+        <ambientLight intensity={0.16} />
+        <ScrollControls pages={4} damping={0.3}>
+          <CameraRig mouse={mouse} />
+          <Atmosphere />
 
-        <section id="tjs-projects" className="tjs-section">
-          <div className="tjs-reveal tjs-wide">
-            <p className="tjs-eyebrow">Projects</p>
-            <h2 className="tjs-h2">things i&apos;ve been building</h2>
-          </div>
-          <ProjectsCarousel />
-        </section>
+          <Bangladesh position={[0, 0, 0]} />
+          <London position={[0, 0, -40]} />
+          <Bedroom position={[0, 0, -80]} />
+          <PlayStationScene position={[0, 0, -120]} />
 
-        <section id="tjs-content" className="tjs-section">
-          <div className="tjs-reveal">
-            <p className="tjs-eyebrow">Content I Like</p>
-            <h2 className="tjs-h2">stuff that keeps me curious</h2>
-            <ul className="tjs-links">
-              {CONTENT.map((item) => (
-                <li key={item.href}>
-                  <a href={item.href} target="_blank" rel="noopener noreferrer">
-                    {item.title}
+          <Scroll html>
+            <div className="tjs-overlay">
+              <Caption title="bangladesh" sub="where it started">
+                <span className="tjs-scroll-hint">scroll to travel ↓</span>
+              </Caption>
+
+              <Caption title="london" sub="where i am now" />
+
+              <Caption title="the bedroom" sub="where i build">
+                <span className="tjs-mini">drag the floating screens →</span>
+              </Caption>
+
+              <Caption title="playstation" sub="where i unwind">
+                <ul className="tjs-cap-links">
+                  {CONTENT.map((item) => (
+                    <li key={item.href}>
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <div className="tjs-cap-contact">
+                  <a href={`mailto:${SOCIALS.email}`}>email</a>
+                  <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer">
+                    github
                   </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section id="tjs-contact" className="tjs-section">
-          <div className="tjs-reveal">
-            <p className="tjs-eyebrow">Contact</p>
-            <h2 className="tjs-h2">let&apos;s work together</h2>
-            <p className="tjs-lead">
-              got a project, a question, or just want to say hi? my inbox is
-              always open.
-            </p>
-            <div className="tjs-contact-links">
-              <a href={`mailto:${SOCIALS.email}`}>{SOCIALS.email}</a>
-              <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer">
-                github
-              </a>
-              <a
-                href={SOCIALS.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                linkedin
-              </a>
+                  <a
+                    href={SOCIALS.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    linkedin
+                  </a>
+                </div>
+              </Caption>
             </div>
-          </div>
-        </section>
-      </div>
+          </Scroll>
+        </ScrollControls>
+
+        <EffectComposer>
+          <Bloom
+            intensity={0.9}
+            luminanceThreshold={0.25}
+            luminanceSmoothing={0.3}
+            mipmapBlur
+          />
+          <Vignette offset={0.3} darkness={0.7} />
+        </EffectComposer>
+      </Canvas>
     </div>
   );
 }
