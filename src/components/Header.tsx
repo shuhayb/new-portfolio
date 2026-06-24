@@ -37,9 +37,9 @@ export function Header() {
           <a
             href="#intro"
             aria-label={NAME}
-            className="transition-colors hover:text-accent-dark dark:hover:text-accent-light"
+            className="transition-opacity hover:opacity-80"
           >
-            <Logo />
+            <Logo className="text-2xl" />
           </a>
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -79,7 +79,7 @@ export function Header() {
             className="fixed inset-0 z-50 flex flex-col bg-main-light px-5 py-3 dark:bg-middle-colour md:hidden"
           >
             <div className="flex items-center justify-between">
-              <Logo />
+              <Logo className="text-2xl" />
               <button
                 className="flex h-9 w-9 items-center justify-center"
                 aria-label="close menu"

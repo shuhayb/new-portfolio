@@ -23,7 +23,7 @@ export function Contact() {
           <h2 className="font-sans text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
             let&apos;s build
             <br />
-            <span className="accent">
+            <span className="text-gradient">
               <Scramble text="something" hoverable />
             </span>
             .

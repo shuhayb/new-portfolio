@@ -1,5 +1,10 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="2" y="2" width="60" height="60" rx="16" fill="#403B3B"/>
-  <rect x="2.75" y="2.75" width="58.5" height="58.5" rx="15.25" stroke="#DDA6A6" stroke-width="1.5"/>
-  <text x="50%" y="53%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-size="30" font-weight="600" letter-spacing="-1" fill="#DDA6A6">SM</text>
+  <defs>
+    <linearGradient id="sm" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#sm)"/>
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-size="30" font-weight="700" letter-spacing="-1.5" fill="#F7F9FF">SM</text>
 </svg>

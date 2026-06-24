@@ -12,14 +12,14 @@ function Flower({ className }: { className?: string }) {
           key={rot}
           cx="50"
           cy="50"
-          rx="14"
+          rx="13"
           ry="44"
           transform={`rotate(${rot} 50 50)`}
-          fill="currentColor"
-          opacity="0.9"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
         />
       ))}
-      <circle cx="50" cy="50" r="10" className="fill-main-light dark:fill-middle-colour" />
     </svg>
   );
 }
@@ -31,7 +31,7 @@ export function Intro() {
       className="relative flex min-h-screen items-center overflow-hidden px-5 pt-28 pb-20 sm:px-8"
     >
       <motion.div
-        className="pointer-events-none absolute -right-16 top-28 h-56 w-56 text-accent-light/40 sm:h-80 sm:w-80 md:right-10 dark:text-accent-dark/30"
+        className="pointer-events-none absolute -right-16 top-28 h-56 w-56 text-accent-dark/30 sm:h-80 sm:w-80 md:right-10 dark:text-accent-light/30"
         animate={{ rotate: 360 }}
         transition={{ duration: 40, ease: "linear", repeat: Infinity }}
       >
@@ -54,9 +54,11 @@ export function Intro() {
           transition={{ duration: 0.7, delay: 0.05 }}
           className="font-sans text-5xl font-semibold leading-[0.95] tracking-tight sm:text-6xl md:text-7xl"
         >
-          <Scramble text="Shuhayb" />
+          <span className="text-gradient">
+            <Scramble text="Shuhayb" />
+          </span>
           <br />
-          <span className="accent">
+          <span className="text-gradient">
             <Scramble text="Miah" />
           </span>
           <span className="caret accent">_</span>
