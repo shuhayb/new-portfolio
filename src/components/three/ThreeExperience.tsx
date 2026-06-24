@@ -6,20 +6,20 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { ScrollControls, Scroll, useScroll } from "@react-three/drei";
 import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
 import * as THREE from "three";
-import { SOCIALS, CONTENT } from "@/lib/data";
-import { Bangladesh, London, Bedroom, PlayStationScene } from "./scenes";
+import { SOCIALS, CONTENT, EXPERIENCE_INTRO } from "@/lib/data";
+import { HomeArea, ProjectsArea, ContentArea, ContactArea } from "./scenes";
 
 const CAM_POINTS: [number, number, number][] = [
-  [0, 3, 9],
-  [6, 3, -31],
-  [0, 3, -69],
-  [4, 3, -111],
+  [0, 4, 9],
+  [0, 4, -31],
+  [0, 4, -71],
+  [0, 4, -111],
 ];
 
 const LOOK_POINTS: [number, number, number][] = [
   [0, 4, 0],
   [0, 4, -40],
-  [0, 3.5, -78],
+  [0, 4, -80],
   [0, 4, -120],
 ];
 
@@ -115,25 +115,24 @@ export default function ThreeExperience() {
           <Atmosphere />
 
           <Suspense fallback={null}>
-            <Bangladesh position={[0, 0, 0]} />
-            <London position={[0, 0, -40]} />
-            <Bedroom position={[0, 0, -80]} />
-            <PlayStationScene position={[0, 0, -120]} />
+            <HomeArea position={[0, 0, 0]} />
+            <ProjectsArea position={[0, 0, -40]} />
+            <ContentArea position={[0, 0, -80]} />
+            <ContactArea position={[0, 0, -120]} />
           </Suspense>
 
           <Scroll html>
             <div className="tjs-overlay">
-              <Caption title="bangladesh" sub="where it started">
-                <span className="tjs-scroll-hint">scroll to travel ↓</span>
+              <Caption title="hi, i'm shuhayb." sub="full stack developer & ai engineer">
+                <p className="tjs-cap-lead">{EXPERIENCE_INTRO}</p>
+                <span className="tjs-scroll-hint">scroll to explore ↓</span>
               </Caption>
 
-              <Caption title="london" sub="where i am now" />
-
-              <Caption title="the bedroom" sub="where i build">
-                <span className="tjs-mini">drag the floating screens →</span>
+              <Caption title="projects" sub="things i've built">
+                <span className="tjs-mini">drag sideways to browse ↔</span>
               </Caption>
 
-              <Caption title="playstation" sub="where i unwind">
+              <Caption title="content i like" sub="stuff that keeps me curious">
                 <ul className="tjs-cap-links">
                   {CONTENT.map((item) => (
                     <li key={item.href}>
@@ -147,6 +146,9 @@ export default function ThreeExperience() {
                     </li>
                   ))}
                 </ul>
+              </Caption>
+
+              <Caption title="contact" sub="let's work together">
                 <div className="tjs-cap-contact">
                   <a href={`mailto:${SOCIALS.email}`}>email</a>
                   <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer">
@@ -167,9 +169,9 @@ export default function ThreeExperience() {
 
         <EffectComposer>
           <Bloom
-            intensity={0.5}
-            luminanceThreshold={0.55}
-            luminanceSmoothing={0.3}
+            intensity={0.85}
+            luminanceThreshold={0.3}
+            luminanceSmoothing={0.4}
             mipmapBlur
           />
           <Vignette offset={0.25} darkness={0.65} />
