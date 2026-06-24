@@ -3,61 +3,70 @@ import { GithubIcon, LinkedinIcon } from "./Icons";
 import { SOCIALS } from "@/lib/data";
 import Reveal from "./Reveal";
 
+const LINKS = [
+  {
+    label: "Email",
+    value: SOCIALS.email,
+    href: `mailto:${SOCIALS.email}`,
+    icon: Mail,
+  },
+  {
+    label: "GitHub",
+    value: "@shuhayb",
+    href: SOCIALS.github,
+    icon: GithubIcon,
+    external: true,
+  },
+  {
+    label: "LinkedIn",
+    value: "shuhaybmiah",
+    href: SOCIALS.linkedin,
+    icon: LinkedinIcon,
+    external: true,
+  },
+];
+
 export default function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-content px-5 py-24 sm:px-8">
+    <section id="contact" className="mx-auto max-w-2xl px-5 py-24 text-center">
       <Reveal>
-        <div className="relative overflow-hidden rounded-3xl border border-line bg-foreground px-6 py-16 text-center sm:px-12 sm:py-20">
-          <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-accent/30 blur-3xl" />
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          Contact
+        </p>
+        <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+          Let&apos;s work together.
+        </h2>
+        <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-muted">
+          Got a project, a question, or just want to say hi? My inbox is always
+          open.
+        </p>
+      </Reveal>
 
-          <p className="relative mb-4 text-sm font-medium uppercase tracking-[0.18em] text-background/60">
-            Get in touch
-          </p>
-          <h2 className="relative mx-auto max-w-2xl text-3xl font-semibold tracking-tight text-background sm:text-5xl">
-            Let&apos;s work together.
-          </h2>
-          <p className="relative mx-auto mt-5 max-w-xl text-lg leading-relaxed text-background/70">
-            I&apos;m always open to new projects, collaborations, or just a chat.
-            Whether you have a question or want to build something — my inbox is
-            open.
-          </p>
-
-          <div className="relative mt-9 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href={`mailto:${SOCIALS.email}`}
-              className="group inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5"
-            >
-              <Mail size={16} />
-              Send email
-            </a>
-            <a
-              href={SOCIALS.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-background/25 px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-background/10"
-            >
-              <LinkedinIcon size={16} />
-              LinkedIn
-            </a>
-            <a
-              href={SOCIALS.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-background/25 px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-background/10"
-            >
-              <GithubIcon size={16} />
-              GitHub
-            </a>
-          </div>
-
+      <Reveal delay={0.1} className="mt-10 space-y-3">
+        {LINKS.map(({ label, value, href, icon: Icon, external }) => (
           <a
-            href={`mailto:${SOCIALS.email}`}
-            className="relative mt-8 inline-flex items-center gap-1.5 text-sm text-background/60 transition-colors hover:text-background"
+            key={label}
+            href={href}
+            {...(external
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+            className="group flex items-center gap-4 rounded-2xl border border-line bg-surface px-5 py-4 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-[0_16px_40px_-24px_rgba(20,19,15,0.35)]"
           >
-            {SOCIALS.email}
-            <ArrowUpRight size={14} />
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-soft text-accent">
+              <Icon size={18} />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-xs uppercase tracking-wider text-muted">
+                {label}
+              </span>
+              <span className="block truncate font-medium">{value}</span>
+            </span>
+            <ArrowUpRight
+              size={18}
+              className="text-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground"
+            />
           </a>
-        </div>
+        ))}
       </Reveal>
     </section>
   );

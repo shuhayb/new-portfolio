@@ -6,7 +6,7 @@ import Reveal from "./Reveal";
 
 export default function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-content px-5 py-24 sm:px-8">
+    <section id="projects" className="mx-auto max-w-4xl px-5 py-24">
       <SectionHeading
         eyebrow="Projects"
         title="Things I've been building"

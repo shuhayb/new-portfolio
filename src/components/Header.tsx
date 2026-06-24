@@ -36,14 +36,14 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-line bg-background/80 backdrop-blur-md"
-          : "border-b border-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-content items-center justify-between px-5 sm:px-8">
+    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
+      <div
+        className={`flex h-14 w-full max-w-3xl items-center justify-between rounded-full px-3 pl-5 transition-all duration-300 ${
+          scrolled
+            ? "border border-line bg-background/80 shadow-[0_8px_30px_-12px_rgba(20,19,15,0.2)] backdrop-blur-md"
+            : "border border-transparent"
+        }`}
+      >
         <a
           href="#home"
           className="flex items-center gap-2 text-base font-semibold tracking-tight"
@@ -86,14 +86,14 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-line bg-background/95 backdrop-blur-md md:hidden">
-          <nav className="mx-auto flex max-w-content flex-col px-5 py-3">
+        <div className="absolute inset-x-4 top-[4.5rem] rounded-2xl border border-line bg-background/95 p-2 shadow-[0_8px_30px_-12px_rgba(20,19,15,0.25)] backdrop-blur-md md:hidden">
+          <nav className="flex flex-col">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm text-muted hover:bg-accent-soft hover:text-accent"
+                className="rounded-xl px-3 py-2.5 text-sm text-muted hover:bg-accent-soft hover:text-accent"
               >
                 {link.label}
               </a>

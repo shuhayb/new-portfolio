@@ -13,6 +13,14 @@ export const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
+export const HELP_WITH = [
+  "Full-stack web apps",
+  "AI agents & automation",
+  "LLM integration",
+  "APIs & backend systems",
+  "Clean, modern UI",
+];
+
 export const TECH = [
   "React",
   "Next.js",
@@ -103,4 +111,4 @@ export const CONTENT: ContentItem[] = [
 ];
 
 export const EXPERIENCE_INTRO =
-  "I'm a full-stack developer and AI engineer. I've been building for the web for a while now, and recently I've been building much more with AI — from intelligent automation to production-grade products. I'm documenting the journey here.";
+  "I'm a Full Stack Developer & AI Engineer. I've been building for the web for a while now, and recently I've been building much more with AI — from intelligent automation to production-grade products. I just love making things that work.";

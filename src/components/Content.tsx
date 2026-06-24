@@ -13,7 +13,7 @@ const ICONS: Record<ContentItem["kind"], typeof BookOpen> = {
 export default function Content() {
   return (
     <section className="border-y border-line bg-surface/50">
-      <div id="content" className="mx-auto max-w-content px-5 py-24 sm:px-8">
+      <div id="content" className="mx-auto max-w-4xl px-5 py-24">
         <SectionHeading
           eyebrow="Content I Like"
           title="What I'm reading, watching & following"
