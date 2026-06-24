@@ -37,31 +37,31 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     index: "01",
-    title: "visqa",
+    title: "project 1",
     description:
-      "An AI-driven testing platform that automatically tests Android and iOS apps without writing test scripts. It uses vision capabilities to \"see\" the app screen, identify UI elements, and decide what actions to take — mimicking a human tester autonomously.",
-    tags: ["Python", "FastAPI", "Appium", "Selenium", "Google Cloud Run", "Docker"],
+      "A placeholder project description. Replace this with a short summary of what you built, the problem it solves, and the tech you used.",
+    tags: ["React", "TypeScript", "Next.js"],
   },
   {
     index: "02",
-    title: "quickcook",
+    title: "project 2",
     description:
-      "Transforms recipe videos from YouTube, TikTok, and Instagram into structured, actionable recipes using AI — then helps users match recipes to their pantry, generate shopping lists, and engage with a cooking community.",
-    tags: ["Flutter", "Firebase", "AI Agents", "Provider", "Material 3"],
+      "A placeholder project description. Replace this with a short summary of what you built, the problem it solves, and the tech you used.",
+    tags: ["Node.js", "PostgreSQL", "API"],
   },
   {
     index: "03",
-    title: "insync fitness",
+    title: "project 3",
     description:
-      "A women's fitness and wellness app that syncs workouts with menstrual cycle phases, helping users optimize exercise performance with cycle-aware recommendations and tracking.",
-    tags: ["Flutter", "Provider", "Supabase", "PostgreSQL", "FL Chart"],
+      "A placeholder project description. Replace this with a short summary of what you built, the problem it solves, and the tech you used.",
+    tags: ["Python", "AI", "Automation"],
   },
   {
     index: "04",
-    title: "resourceriq",
+    title: "project 4",
     description:
-      "An automated voice-calling platform that screens job candidates via AI-powered phone calls, assessing their availability and interest in new opportunities. Recruiters upload candidates via CSV, configure campaigns for job openings, and the system autonomously contacts candidates using natural-sounding AI voice agents — capturing transcripts, dispositions, and lead temperature scores.",
-    tags: ["React 19", "TypeScript", "Fastify", "Prisma ORM", "PostgreSQL"],
+      "A placeholder project description. Replace this with a short summary of what you built, the problem it solves, and the tech you used.",
+    tags: ["Flutter", "Firebase", "Mobile"],
   },
 ];
 
