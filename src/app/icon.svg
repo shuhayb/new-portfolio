@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" rx="7" fill="#111111"/>
-  <path d="M16 4 C16.9 10.2 21.8 15.1 28 16 C21.8 16.9 16.9 21.8 16 28 C15.1 21.8 10.2 16.9 4 16 C10.2 15.1 15.1 10.2 16 4 Z" fill="#ffffff"/>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#403B3B"/>
+  <rect x="2.75" y="2.75" width="58.5" height="58.5" rx="15.25" stroke="#DDA6A6" stroke-width="1.5"/>
+  <text x="50%" y="53%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-size="30" font-weight="600" letter-spacing="-1" fill="#DDA6A6">SM</text>
 </svg>
