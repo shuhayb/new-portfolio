@@ -21,13 +21,18 @@ export function Contact() {
         <Reveal>
           <p className="mb-5 text-xs uppercase tracking-[0.2em] accent">[ contact ]</p>
           <h2 className="font-sans text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
-            let&apos;s build
+            let&apos;s work
             <br />
             <span className="text-gradient">
-              <Scramble text="something" hoverable />
+              <Scramble text="together" hoverable />
             </span>
             .
           </h2>
+          <p className="mt-6 max-w-xl text-sm leading-relaxed text-secondary-light dark:text-secondary-dark">
+            I&apos;m always open to discussing new projects, collaborations or
+            opportunities. Whether you have a question or just want to say hi — my inbox
+            is always open.
+          </p>
         </Reveal>
 
         <Reveal delay={0.1}>

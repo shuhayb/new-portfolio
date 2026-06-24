@@ -12,28 +12,14 @@ export const SOCIALS = {
 
 export const NAV_LINKS = [
   { label: "intro", href: "#intro" },
-  { label: "work", href: "#work" },
-  { label: "content", href: "#content" },
+  { label: "projects", href: "#projects" },
+  { label: "skills", href: "#skills" },
+  { label: "experience", href: "#experience" },
   { label: "contact", href: "#contact" },
 ];
 
-export const INTRO_PARAGRAPHS = [
-  "Hi, I'm Shuhayb — a full-stack developer and AI engineer based in the UK. I've been building for the web for a while now, and lately I've been building much more with AI: from intelligent automation to production-grade products that actually ship.",
-  "I love taking an idea from a blank page to something people can actually use — clean interfaces, solid systems, and the AI glue in between.",
-];
-
-export const TECH = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "AI Agents",
-  "Python",
-  "Tailwind CSS",
-  "PostgreSQL",
-  "LLM Integration",
-  "Vercel",
-];
+export const HERO_TAGLINE =
+  "I build AI agents and full-stack products that solve real problems. From intelligent automation to production-grade web experiences — I ship things that actually work.";
 
 export type Project = {
   index: string;
@@ -49,7 +35,7 @@ export const PROJECTS: Project[] = [
     index: "01",
     title: "personal portfolio",
     description:
-      "This site. A fast, animated portfolio built from scratch with the Next.js App Router, server components and motion — designed with a warm light/dark theme and deployed on Vercel.",
+      "This site. A fast, animated portfolio built from scratch with the Next.js App Router, server components and motion — designed with a blue gradient light/dark theme and deployed on Vercel.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     source: "https://github.com/shuhayb/new-portfolio",
   },
@@ -77,22 +63,54 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export type ContentItem = {
+export type SkillGroup = {
   title: string;
-  href: string;
+  items: string[];
 };
 
-export const CONTENT: ContentItem[] = [
+export const SKILLS: SkillGroup[] = [
   {
-    title: "interstellar",
-    href: "https://en.wikipedia.org/wiki/Interstellar_(film)",
+    title: "AI & Agents",
+    items: [
+      "AI Agent Architecture",
+      "LLM Integration",
+      "Prompt Engineering",
+      "Computer Vision",
+      "Google Gemini",
+      "Vertex AI",
+      "OpenAI API",
+      "LangChain",
+    ],
   },
   {
-    title: "jk rowling: a year in the life",
-    href: "https://www.youtube.com/watch?v=Ij97LWo0I7s",
+    title: "Frontend Development",
+    items: ["React", "Next.js", "Flutter", "Astro", "TypeScript", "Tailwind CSS", "Framer Motion"],
   },
   {
-    title: "the pixar story",
-    href: "https://en.wikipedia.org/wiki/The_Pixar_Story",
+    title: "Backend Systems",
+    items: ["Node.js", "Python", "FastAPI", "Java", "Spring Boot", "PostgreSQL", "Firebase", "Prisma"],
+  },
+  {
+    title: "Cloud & DevOps",
+    items: ["Google Cloud", "AWS", "Docker", "CI/CD", "Turborepo", "Git/GitHub", "Vercel", "Agile/Scrum"],
+  },
+];
+
+export type ExperienceItem = {
+  company: string;
+  period: string;
+  role: string;
+  description: string;
+  tags: string[];
+};
+
+export const EXPERIENCE: ExperienceItem[] = [
+  {
+    company: "Deloitte Digital",
+    period: "2021 — Present",
+    role: "Software Engineer",
+    description:
+      "Building enterprise-grade solutions and AI-driven tools for global clients. Developing intelligent automation pipelines, AI agents, and cloud-native applications in an agile environment.",
+    tags: ["AI Agents & Automation", "Enterprise clients", "Cloud-native apps", "Agile delivery"],
   },
 ];
