@@ -140,3 +140,31 @@ body {
   width: 0.6ch;
   animation: blink 1.1s step-end infinite;
 }
+
+.skill-ghost {
+  color: transparent;
+  -webkit-text-stroke: 1px currentColor;
+  opacity: 0.12;
+}
+
+.dark .skill-ghost {
+  opacity: 0.18;
+}
+
+@keyframes skill-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.skill-marquee-track {
+  animation: skill-marquee 28s linear infinite;
+  color: var(--skill-marquee-color, #1e50d6);
+}
+
+.dark .skill-marquee-track {
+  --skill-marquee-color: #5ab2ff;
+}

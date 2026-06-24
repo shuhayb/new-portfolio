@@ -12,7 +12,7 @@ const socials = [
 export function Footer() {
   return (
     <footer className="border-t border-text-light/10 dark:border-text-dark/10">
-      <div className="content-cap grid gap-10 px-5 py-12 sm:px-8 md:grid-cols-2 md:py-16">
+      <div className="content-cap flex flex-col gap-10 px-5 py-12 sm:px-8 md:flex-row md:items-start md:justify-between md:py-16">
         <div className="flex flex-col gap-4">
           <a href="#intro" aria-label={NAME} className="w-fit transition-opacity hover:opacity-80">
             <Logo className="text-3xl" />
@@ -26,7 +26,7 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-5 md:items-start">
+        <div className="flex flex-col gap-5 md:items-end">
           <p className="text-xs uppercase tracking-[0.2em] accent">[ my socials ]</p>
           <ul className="flex flex-col gap-3">
             {socials.map(({ label, href, Icon }) => (
