@@ -90,6 +90,20 @@ ul {
   margin-top: 6px;
 }
 
+.links li {
+  margin-bottom: 12px;
+}
+
+.links a {
+  color: #888888;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.links a:hover {
+  color: #111111;
+}
+
 footer {
   margin-top: 64px;
   padding-bottom: 48px;

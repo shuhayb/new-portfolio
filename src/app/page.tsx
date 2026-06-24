@@ -1,7 +1,10 @@
+import Footer from "@/components/Footer";
+
 export default function Home() {
   return (
-    <main>
-      <h1>hi i&apos;m shuhayb.</h1>
+    <>
+      <main>
+        <h1>hi i&apos;m shuhayb.</h1>
       <p>
         i&apos;m just a software engineer who loves building things for myself
         and others.
@@ -21,6 +24,8 @@ export default function Home() {
         <a href="/content">content i like</a>, or{" "}
         <a href="/contact">get in touch</a>.
       </p>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }

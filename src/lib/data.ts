@@ -76,37 +76,22 @@ export const PROJECTS: Project[] = [
 
 export type ContentItem = {
   title: string;
-  by: string;
-  note: string;
-  href?: string;
-  kind: "Reading" | "Watching" | "Listening" | "Following";
+  href: string;
 };
 
-// TODO: fill these with the content you actually love.
+// A simple list of links to content i like.
 export const CONTENT: ContentItem[] = [
   {
-    kind: "Reading",
-    title: "Engineering & AI essays",
-    by: "Blogs and newsletters",
-    note: "Long-form writing on building software, shipping fast, and where AI is heading.",
+    title: "interstellar",
+    href: "https://en.wikipedia.org/wiki/Interstellar_(film)",
   },
   {
-    kind: "Watching",
-    title: "Build-in-public & deep dives",
-    by: "YouTube creators",
-    note: "Technical walkthroughs, system design breakdowns, and people building real things.",
+    title: "jk rowling a year in the life",
+    href: "https://www.youtube.com/watch?v=Ij97LWo0I7s",
   },
   {
-    kind: "Listening",
-    title: "Tech & founder podcasts",
-    by: "Conversations with builders",
-    note: "Stories from engineers and founders on the craft and the grind behind products.",
-  },
-  {
-    kind: "Following",
-    title: "Developers worth your time",
-    by: "Folks on the timeline",
-    note: "Engineers and AI researchers who share genuinely useful, no-fluff insights.",
+    title: "the pixar story",
+    href: "https://en.wikipedia.org/wiki/The_Pixar_Story",
   },
 ];
 
