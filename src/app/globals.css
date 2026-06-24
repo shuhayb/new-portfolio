@@ -2,95 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #fbfbfa;
-  --surface: #ffffff;
-  --foreground: #14130f;
-  --muted: #6b6b66;
-  --border: #e7e6e1;
-  --accent: #4f46e5;
-  --accent-soft: #eef0ff;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 96px;
-}
-
 body {
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Helvetica, Arial, sans-serif;
-  background: var(--background);
-  color: var(--foreground);
-  font-feature-settings: "ss01", "cv01";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  letter-spacing: -0.011em;
-  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "avenir next", avenir, "segoe ui", "helvetica neue", helvetica, Cantarell,
+    Ubuntu, roboto, noto, arial, sans-serif;
+  font-weight: normal;
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  background: #ffffff;
+  color: #555555;
+  max-width: 640px;
+  margin: 64px 24px;
 }
 
-@layer utilities {
-  .text-muted {
-    color: var(--muted);
-  }
-  .bg-surface {
-    background: var(--surface);
-  }
-  .border-line {
-    border-color: var(--border);
-  }
-  .accent {
-    color: var(--accent);
-  }
-
-  /* subtle grid / dot backdrop for the hero */
-  .bg-grid {
-    background-image: radial-gradient(
-      circle at 1px 1px,
-      rgba(20, 19, 15, 0.06) 1px,
-      transparent 0
-    );
-    background-size: 26px 26px;
-  }
-
-  .gradient-text {
-    background: linear-gradient(120deg, #14130f 0%, #4f46e5 60%, #7c3aed 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .animate-marquee {
-    animation: marquee 32s linear infinite;
-  }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 48px;
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+nav a {
+  color: #0000ee;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-size: 15px;
+  margin-right: 12px;
 }
 
-/* Reduce motion preference */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .animate-marquee {
-    animation: none;
-  }
+nav a:hover {
+  color: #551a8b;
 }
 
-::selection {
-  background: var(--accent);
-  color: #fff;
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  line-height: 1.3;
+  color: #111111;
+}
+
+h2 {
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #111111;
+}
+
+main p {
+  margin-bottom: 20px;
+}
+
+main a {
+  color: #0000ee;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+main a:hover {
+  color: #551a8b;
+}
+
+ul {
+  list-style: none;
+}
+
+.entry {
+  margin-bottom: 28px;
+}
+
+.entry .meta {
+  font-size: 15px;
+  color: #888888;
+  margin-bottom: 6px;
+}
+
+.tags {
+  font-size: 14px;
+  color: #999999;
+  margin-top: 6px;
+}
+
+footer {
+  margin-top: 64px;
+  padding-bottom: 48px;
+  font-size: 15px;
+  color: #555555;
+}
+
+footer a {
+  color: #0000ee;
+  text-decoration: underline;
+}
+
+footer a:hover {
+  color: #551a8b;
 }
