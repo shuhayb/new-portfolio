@@ -67,6 +67,7 @@ export const PROJECTS: Project[] = [
 
 export type SkillGroup = {
   title: string;
+  titleLines?: [string, string];
   items: string[];
 };
 
@@ -86,14 +87,17 @@ export const SKILLS: SkillGroup[] = [
   },
   {
     title: "Frontend Development",
+    titleLines: ["Frontend", "Development"],
     items: ["React", "Next.js", "Flutter", "Astro", "TypeScript", "Tailwind CSS", "Framer Motion"],
   },
   {
     title: "Backend Systems",
+    titleLines: ["Backend", "Systems"],
     items: ["Node.js", "Python", "FastAPI", "Java", "Spring Boot", "PostgreSQL", "Firebase", "Prisma"],
   },
   {
     title: "Cloud & DevOps",
+    titleLines: ["Cloud &", "DevOps"],
     items: ["Google Cloud", "AWS", "Docker", "CI/CD", "Turborepo", "Git/GitHub", "Vercel", "Agile/Scrum"],
   },
 ];
@@ -119,12 +123,12 @@ export const EXPERIENCE: ExperienceItem[] = [
   },
   {
     index: "02",
-    company: "BMW",
-    period: "2018 — 2019",
-    role: "Software Engineer (Placement)",
+    company: "ServiceNow",
+    period: "Year in Industry",
+    role: "Technical Support Engineer — Platform Technologies",
     description:
-      "Year-long industrial placement developing internal tools and systems. Gained hands-on experience in automotive software engineering within a global corporation.",
-    tags: ["Internal tooling", "Automotive tech", "Global team"],
+      "A year in industry supporting the ServiceNow platform on the backend — diagnosing client issues and resolving critical, high-priority incidents under tight deadlines so businesses could keep operating. Used MySQL to patch databases and Unix commands to trace logs and track down root causes.",
+    tags: ["ServiceNow Platform", "MySQL", "Unix", "Technical Support", "Backend troubleshooting"],
   },
 ];
 

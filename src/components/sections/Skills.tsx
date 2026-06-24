@@ -75,7 +75,7 @@ export function Skills() {
 
                   <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
                     <h3
-                      className={`font-sans text-2xl font-semibold uppercase tracking-tight transition-colors duration-300 sm:text-3xl md:text-4xl ${
+                      className={`font-sans text-2xl font-semibold uppercase leading-[0.95] tracking-tight transition-colors duration-300 sm:text-3xl md:text-4xl ${
                         showPills && canHover
                           ? "text-accent-dark dark:text-accent-light"
                           : !canHover
@@ -83,7 +83,14 @@ export function Skills() {
                             : "text-secondary-light dark:text-secondary-dark"
                       }`}
                     >
-                      {group.title}
+                      {group.titleLines ? (
+                        <>
+                          <span className="block">{group.titleLines[0]}</span>
+                          <span className="block">{group.titleLines[1]}</span>
+                        </>
+                      ) : (
+                        group.title
+                      )}
                     </h3>
 
                     <AnimatePresence>
@@ -94,7 +101,7 @@ export function Skills() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: 16 }}
                           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                          className="flex max-w-xl flex-wrap gap-2 md:justify-end"
+                          className="flex max-w-2xl flex-wrap gap-2.5 md:justify-end"
                         >
                           {group.items.map((item, j) => (
                             <motion.li
@@ -103,7 +110,7 @@ export function Skills() {
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ duration: 0.25, delay: j * 0.04 }}
                             >
-                              <span className="inline-block rounded-full border border-text-light/15 px-3 py-1.5 text-xs text-text-light dark:border-text-dark/20 dark:text-text-dark">
+                              <span className="inline-block rounded-full border border-text-light/15 px-4 py-2 text-sm text-text-light dark:border-text-dark/20 dark:text-text-dark md:px-5 md:py-2.5 md:text-base">
                                 {item}
                               </span>
                             </motion.li>
