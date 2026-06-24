@@ -1,33 +1,26 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { Suspense, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { ScrollControls, Scroll, useScroll } from "@react-three/drei";
 import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
 import * as THREE from "three";
 import { SOCIALS, CONTENT } from "@/lib/data";
-import {
-  Bangladesh,
-  London,
-  Bedroom,
-  PlayStationScene,
-} from "./scenes";
-
-const THEME = ["#e3a45f", "#717c8a", "#171522", "#07070d"];
+import { Bangladesh, London, Bedroom, PlayStationScene } from "./scenes";
 
 const CAM_POINTS: [number, number, number][] = [
-  [0, 1.8, 9],
-  [7, 2.2, -29],
-  [0, 2.6, -73],
-  [5, 2.2, -111],
+  [0, 3, 9],
+  [6, 3, -31],
+  [0, 3, -69],
+  [4, 3, -111],
 ];
 
 const LOOK_POINTS: [number, number, number][] = [
-  [0, 1, 0],
-  [0, 1.5, -40],
-  [0, 2.2, -80],
-  [0, 2.2, -120],
+  [0, 4, 0],
+  [0, 4, -40],
+  [0, 3.5, -78],
+  [0, 4, -120],
 ];
 
 type MouseRef = React.MutableRefObject<{ x: number; y: number }>;
@@ -36,9 +29,7 @@ function CameraRig({ mouse }: { mouse: MouseRef }) {
   const scroll = useScroll();
   const camCurve = useMemo(
     () =>
-      new THREE.CatmullRomCurve3(
-        CAM_POINTS.map((p) => new THREE.Vector3(...p))
-      ),
+      new THREE.CatmullRomCurve3(CAM_POINTS.map((p) => new THREE.Vector3(...p))),
     []
   );
   const lookCurve = useMemo(
@@ -54,8 +45,8 @@ function CameraRig({ mouse }: { mouse: MouseRef }) {
   useFrame((state) => {
     const o = THREE.MathUtils.clamp(scroll.offset, 0, 1);
     camCurve.getPoint(o, target);
-    target.x += mouse.current.x * 1.1;
-    target.y += -mouse.current.y * 0.6;
+    target.x += mouse.current.x * 0.9;
+    target.y += -mouse.current.y * 0.5;
     state.camera.position.lerp(target, 0.05);
     lookCurve.getPoint(o, look);
     state.camera.lookAt(look);
@@ -65,24 +56,12 @@ function CameraRig({ mouse }: { mouse: MouseRef }) {
 }
 
 function Atmosphere() {
-  const scroll = useScroll();
   const { scene } = useThree();
-  const colors = useMemo(() => THEME.map((c) => new THREE.Color(c)), []);
-  const cur = useMemo(() => new THREE.Color(THEME[0]), []);
-
   useMemo(() => {
-    scene.fog = new THREE.Fog(THEME[0], 5, 36);
-    scene.background = cur;
-  }, [scene, cur]);
-
-  useFrame(() => {
-    const o = scroll.offset * (colors.length - 1);
-    const i = Math.min(Math.floor(o), colors.length - 2);
-    const f = o - i;
-    cur.copy(colors[i]).lerp(colors[i + 1], f);
-    if (scene.fog) (scene.fog as THREE.Fog).color.copy(cur);
-  });
-
+    const c = new THREE.Color("#06070b");
+    scene.background = c;
+    scene.fog = new THREE.Fog("#06070b", 12, 34);
+  }, [scene]);
   return null;
 }
 
@@ -129,16 +108,18 @@ export default function ThreeExperience() {
         </Link>
       </header>
 
-      <Canvas camera={{ position: [0, 1.8, 9], fov: 55 }} dpr={[1, 1.8]}>
-        <ambientLight intensity={0.16} />
+      <Canvas camera={{ position: [0, 3, 9], fov: 55 }} dpr={[1, 1.8]}>
+        <ambientLight intensity={0.6} />
         <ScrollControls pages={4} damping={0.3}>
           <CameraRig mouse={mouse} />
           <Atmosphere />
 
-          <Bangladesh position={[0, 0, 0]} />
-          <London position={[0, 0, -40]} />
-          <Bedroom position={[0, 0, -80]} />
-          <PlayStationScene position={[0, 0, -120]} />
+          <Suspense fallback={null}>
+            <Bangladesh position={[0, 0, 0]} />
+            <London position={[0, 0, -40]} />
+            <Bedroom position={[0, 0, -80]} />
+            <PlayStationScene position={[0, 0, -120]} />
+          </Suspense>
 
           <Scroll html>
             <div className="tjs-overlay">
@@ -186,12 +167,12 @@ export default function ThreeExperience() {
 
         <EffectComposer>
           <Bloom
-            intensity={0.9}
-            luminanceThreshold={0.25}
+            intensity={0.5}
+            luminanceThreshold={0.55}
             luminanceSmoothing={0.3}
             mipmapBlur
           />
-          <Vignette offset={0.3} darkness={0.7} />
+          <Vignette offset={0.25} darkness={0.65} />
         </EffectComposer>
       </Canvas>
     </div>
