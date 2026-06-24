@@ -7,6 +7,7 @@ export default function Nav() {
       <Link href="/projects">projects</Link>
       <Link href="/content">content i like</Link>
       <Link href="/contact">contact</Link>
+      <Link href="/threejs">threejs version</Link>
     </nav>
   );
 }
