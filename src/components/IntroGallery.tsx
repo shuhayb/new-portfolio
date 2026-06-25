@@ -18,11 +18,13 @@ function PhotoTile({
   className = "",
   sizes,
   objectPosition = "center",
+  cropBleed = false,
 }: {
   photo: IntroPhoto;
   className?: string;
   sizes: string;
   objectPosition?: string;
+  cropBleed?: boolean;
 }) {
   const [loaded, setLoaded] = useState(false);
 
@@ -39,7 +41,7 @@ function PhotoTile({
         onLoad={() => setLoaded(true)}
         className={`object-cover transition-[opacity,transform] duration-700 ease-out group-hover:scale-110 ${
           loaded ? "opacity-100" : "opacity-0"
-        }`}
+        } ${cropBleed && loaded ? "scale-[1.04]" : ""}`}
         style={{ objectPosition }}
       />
     </div>
@@ -57,6 +59,8 @@ export function IntroGallery() {
       <PhotoTile
         photo={INTRO_PHOTOS.primary}
         sizes="(max-width: 768px) 45vw, 240px"
+        objectPosition="center 38%"
+        cropBleed
         className="-rotate-2 transition-transform duration-500 hover:rotate-0"
       />
 

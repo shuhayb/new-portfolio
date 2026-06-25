@@ -47,18 +47,18 @@ export function Intro() {
         <div className="mx-auto w-full max-w-[360px] shrink-0 md:mx-0 md:max-w-none md:w-[420px] lg:w-[460px]">
           <IntroGallery />
         </div>
-      </div>
 
-      <motion.a
-        href="#projects"
-        aria-label={`${NAME} — scroll to explore`}
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.25, ease: introEase }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs tracking-[0.18em] text-secondary-light dark:text-secondary-dark"
-      >
-        [ scroll to explore ]
-      </motion.a>
+        <motion.a
+          href="#projects"
+          aria-label={`${NAME} — scroll to explore`}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.25, ease: introEase }}
+          className="col-span-full mt-2 w-full text-center text-xs tracking-[0.18em] text-secondary-light dark:text-secondary-dark sm:mt-4"
+        >
+          [ scroll to explore ]
+        </motion.a>
+      </div>
     </section>
   );
 }
