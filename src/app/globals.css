@@ -6,7 +6,7 @@
   html {
     @apply font-mono text-text-light;
     background-color: #f7f9ff;
-    overflow-x: clip;
+    overflow-x: hidden;
     max-width: 100%;
   }
 
@@ -17,7 +17,7 @@
 
   body {
     color: inherit;
-    overflow-x: clip;
+    overflow-x: hidden;
     max-width: 100%;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
