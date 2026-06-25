@@ -57,7 +57,7 @@ export function IntroGallery() {
             src={first.src}
             alt={first.alt}
             sizes="(max-width: 768px) 40vw, 200px"
-            className="rotate-2 transition-transform duration-500 hover:rotate-0"
+            className="mt-2 rotate-2 transition-transform duration-500 hover:rotate-0 sm:mt-3 md:mt-4"
           />
         ) : null}
         {second ? (
