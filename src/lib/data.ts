@@ -19,7 +19,7 @@ export const NAV_LINKS = [
 ];
 
 export const INTRO_PARAGRAPHS = [
-  "I build AI agents and full-stack products that solve real problems. From intelligent automation to production-grade web experiences — I ship things that work.",
+  "I like to build things for people, stay creative, and have a passion for code quality and shipping products that are useful to others.",
 ];
 
 export const PROJECTS_INTRO =
