@@ -11,7 +11,7 @@ export function Intro() {
       id="intro"
       className="snap-section relative flex min-h-dvh items-start overflow-visible px-5 pt-24 pb-16 sm:px-8 sm:pt-28 sm:pb-20 md:items-center"
     >
-      <div className="content-cap relative z-10 grid w-full min-w-0 grid-cols-1 items-center gap-y-8 overflow-visible md:grid-cols-[minmax(0,1fr)_380px] md:gap-x-12 md:gap-y-0 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-x-16">
+      <div className="content-cap relative z-10 grid w-full min-w-0 grid-cols-1 items-center gap-y-8 overflow-visible md:grid-cols-[minmax(0,1fr)_420px] md:gap-x-12 md:gap-y-0 lg:grid-cols-[minmax(0,1fr)_460px] lg:gap-x-16">
         <div className="min-w-0 w-full">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -50,7 +50,7 @@ export function Intro() {
           </motion.div>
         </div>
 
-        <div className="mx-auto w-full max-w-[320px] shrink-0 overflow-visible sm:max-w-[360px] md:mx-0 md:w-[380px] md:max-w-none lg:w-[400px]">
+        <div className="mx-auto w-full max-w-[360px] shrink-0 md:mx-0 md:max-w-none md:w-[420px] lg:w-[460px]">
           <IntroGallery />
         </div>
       </div>
