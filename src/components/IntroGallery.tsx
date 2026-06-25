@@ -41,8 +41,8 @@ export function IntroGallery() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      animate={{ y: 0 }}
       transition={{ duration: 0.7, delay: 0.15 }}
       className="grid h-[260px] w-full grid-cols-[1.05fr_0.95fr] gap-2.5 sm:h-[300px] sm:gap-3 md:h-[380px] lg:h-[420px]"
     >

@@ -9,6 +9,7 @@
     overflow-x: hidden;
     max-width: 100%;
     color-scheme: light;
+    scroll-behavior: smooth;
   }
 
   html.dark {
@@ -75,6 +76,12 @@ body {
   scroll-margin-top: 4.5rem;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* corner brackets used for hover labels / framed media */
 .border-corner {
   position: relative;
@@ -109,13 +116,21 @@ body {
 
 /* gradient blue text — royal blue in light, shiny blue in dark */
 .text-gradient {
+  color: #1e50d6;
   background-image: linear-gradient(115deg, #1d4ed8 0%, #3b82f6 55%, #2563eb 100%);
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
+@supports (background-clip: text) {
+  .text-gradient {
+    color: transparent;
+  }
+}
+
 .dark .text-gradient {
+  color: #5ab2ff;
   background-image: linear-gradient(115deg, #38bdf8 0%, #60a5fa 50%, #818cf8 100%);
   filter: drop-shadow(0 0 22px rgba(90, 178, 255, 0.35));
 }
