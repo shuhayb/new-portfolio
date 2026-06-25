@@ -10,12 +10,14 @@ function PhotoTile({
   priority = false,
   className = "",
   sizes,
+  objectPosition = "center",
 }: {
   src: string;
   alt: string;
   priority?: boolean;
   className?: string;
   sizes: string;
+  objectPosition?: string;
 }) {
   return (
     <div
@@ -28,6 +30,7 @@ function PhotoTile({
         priority={priority}
         sizes={sizes}
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+        style={{ objectPosition }}
       />
     </div>
   );
@@ -57,7 +60,8 @@ export function IntroGallery() {
             src={first.src}
             alt={first.alt}
             sizes="(max-width: 768px) 40vw, 200px"
-            className="mt-2 rotate-2 transition-transform duration-500 hover:rotate-0 sm:mt-3 md:mt-4"
+            objectPosition="center 22%"
+            className="rotate-2 transition-transform duration-500 hover:rotate-0"
           />
         ) : null}
         {second ? (
