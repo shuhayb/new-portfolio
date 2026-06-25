@@ -4,40 +4,12 @@ import { motion } from "framer-motion";
 import { Scramble } from "@/components/Scramble";
 import { NAME, ROLE, INTRO_PARAGRAPHS } from "@/lib/data";
 
-function Flower({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 100 100" className={className} aria-hidden="true">
-      {[0, 45, 90, 135].map((rot) => (
-        <ellipse
-          key={rot}
-          cx="50"
-          cy="50"
-          rx="13"
-          ry="44"
-          transform={`rotate(${rot} 50 50)`}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-      ))}
-    </svg>
-  );
-}
-
 export function Intro() {
   return (
     <section
       id="intro"
-      className="relative flex min-h-screen items-center overflow-hidden px-5 pt-28 pb-20 sm:px-8"
+      className="snap-section relative flex min-h-dvh items-center px-5 pt-28 pb-20 sm:px-8"
     >
-      <motion.div
-        className="pointer-events-none absolute -right-16 top-28 h-56 w-56 text-accent-dark/30 sm:h-80 sm:w-80 md:right-10 dark:text-accent-light/30"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 40, ease: "linear", repeat: Infinity }}
-      >
-        <Flower className="h-full w-full" />
-      </motion.div>
-
       <div className="content-cap relative z-10 w-full">
         <motion.p
           initial={{ opacity: 0, y: 16 }}

@@ -50,7 +50,7 @@ export function Skills() {
   const canHover = useCanHover();
 
   return (
-    <section id="skills" className="px-5 py-24 sm:px-8 md:py-32">
+    <section id="skills" className="snap-section flex min-h-dvh flex-col justify-center px-5 py-24 sm:px-8 md:py-32">
       <div className="content-cap">
         <Reveal className="mb-14">
           <p className="mb-3 text-xs uppercase tracking-[0.2em] accent">[ capabilities ]</p>

@@ -15,7 +15,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="flex min-h-[80vh] items-center px-5 py-24 sm:px-8 md:py-32"
+      className="snap-section flex min-h-dvh items-center px-5 py-24 sm:px-8 md:py-32"
     >
       <div className="content-cap w-full">
         <Reveal>

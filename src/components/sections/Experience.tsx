@@ -5,7 +5,7 @@ import { EXPERIENCE } from "@/lib/data";
 
 export function Experience() {
   return (
-    <section id="experience" className="px-5 py-24 sm:px-8 md:py-32">
+    <section id="experience" className="snap-section flex min-h-dvh flex-col justify-center px-5 py-24 sm:px-8 md:py-32">
       <div className="content-cap">
         <Reveal className="mb-14 flex items-end justify-between gap-4">
           <div>

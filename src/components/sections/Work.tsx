@@ -6,7 +6,7 @@ import { PROJECTS, PROJECTS_INTRO } from "@/lib/data";
 
 export function Work() {
   return (
-    <section id="projects" className="px-5 py-24 sm:px-8 md:py-32">
+    <section id="projects" className="snap-section flex min-h-dvh flex-col justify-center px-5 py-24 sm:px-8 md:py-32">
       <div className="content-cap">
         <Reveal className="mb-14 flex items-end justify-between gap-4">
           <div>

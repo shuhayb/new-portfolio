@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { ProviderTheme } from "@/app/providers/themeprovider";
+import { LenisProvider } from "@/app/providers/lenisprovider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
@@ -34,9 +35,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${poppins.variable} ${robotoMono.variable}`}>
       <body>
         <ProviderTheme>
-          <Header />
-          {children}
-          <Footer />
+          <LenisProvider>
+            <Header />
+            {children}
+            <Footer />
+          </LenisProvider>
         </ProviderTheme>
       </body>
     </html>
