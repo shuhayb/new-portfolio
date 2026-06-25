@@ -2,127 +2,112 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 import { NAV_LINKS } from "@/lib/data";
 
 const SECTION_IDS = NAV_LINKS.map((link) => link.href.replace("#", ""));
+const HEADER_OFFSET = -72;
+const SCROLL_EASING = (t: number) => 1 - Math.pow(1 - t, 4);
 
 export function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t: number) => 1 - Math.pow(1 - t, 4),
-      smoothWheel: false,
-    });
-
-    let rafId = 0;
-    const raf = (time: number) => {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    };
-    rafId = requestAnimationFrame(raf);
-
-    let isSnapping = false;
-    let wheelDelta = 0;
-    let wheelTimeout: ReturnType<typeof setTimeout> | undefined;
+    let currentIndex = 0;
+    let isAnimating = false;
 
     const getSections = () =>
       SECTION_IDS.map((id) => document.getElementById(id)).filter(
         (el): el is HTMLElement => Boolean(el)
       );
 
-    const getCurrentIndex = () => {
+    const getSectionTop = (section: HTMLElement, scroll: number) =>
+      section.getBoundingClientRect().top + scroll;
+
+    const syncCurrentIndex = (scroll: number) => {
       const sections = getSections();
-      const scroll = lenis.scroll;
-      let index = 0;
+      let closest = 0;
       let minDistance = Infinity;
 
-      sections.forEach((section, i) => {
-        const distance = Math.abs(section.offsetTop - scroll);
+      sections.forEach((section, index) => {
+        const distance = Math.abs(getSectionTop(section, scroll) + HEADER_OFFSET - scroll);
         if (distance < minDistance) {
           minDistance = distance;
-          index = i;
+          closest = index;
         }
       });
 
-      return index;
+      currentIndex = closest;
     };
 
-    const snapToIndex = (index: number) => {
+    const scrollToSection = (index: number) => {
       const sections = getSections();
-      const target = sections[index];
-      if (!target || isSnapping) return;
+      const section = sections[index];
+      if (!section) return;
 
-      isSnapping = true;
-      lenis.scrollTo(target, {
+      currentIndex = index;
+      isAnimating = true;
+
+      lenis.scrollTo(section, {
+        offset: HEADER_OFFSET,
         duration: 1.1,
-        easing: (t: number) => 1 - Math.pow(1 - t, 4),
+        easing: SCROLL_EASING,
         onComplete: () => {
-          window.setTimeout(() => {
-            isSnapping = false;
-          }, 150);
+          isAnimating = false;
         },
       });
     };
 
-    const onWheel = (event: WheelEvent) => {
-      if (isSnapping) {
-        event.preventDefault();
-        return;
-      }
-
-      wheelDelta += event.deltaY;
-
-      if (wheelTimeout) clearTimeout(wheelTimeout);
-      wheelTimeout = setTimeout(() => {
-        wheelDelta = 0;
-      }, 120);
-
-      if (Math.abs(wheelDelta) < 40) return;
-
-      event.preventDefault();
-
-      const direction = wheelDelta > 0 ? 1 : -1;
-      wheelDelta = 0;
-
-      const current = getCurrentIndex();
-      const next = Math.max(0, Math.min(SECTION_IDS.length - 1, current + direction));
-
-      if (next !== current) snapToIndex(next);
-    };
-
-    const onClick = (event: MouseEvent) => {
-      const anchor = (event.target as Element).closest('a[href^="#"]');
-      if (!anchor) return;
-
-      const href = anchor.getAttribute("href");
-      if (!href || href === "#") return;
-
-      const target = document.getElementById(href.slice(1));
-      if (!target) return;
-
-      event.preventDefault();
-      lenis.scrollTo(target, {
+    const lenis = new Lenis({
+      autoRaf: true,
+      smoothWheel: false,
+      anchors: {
+        offset: HEADER_OFFSET,
         duration: 1.1,
-        easing: (t: number) => 1 - Math.pow(1 - t, 4),
-      });
+        easing: SCROLL_EASING,
+      },
+      virtualScroll: ({ deltaY, event }) => {
+        if (isAnimating) {
+          event.preventDefault();
+          return false;
+        }
+
+        event.preventDefault();
+
+        if (Math.abs(deltaY) < 20) return false;
+
+        const sections = getSections();
+        if (sections.length === 0) return false;
+
+        const direction = deltaY > 0 ? 1 : -1;
+        const nextIndex = Math.max(
+          0,
+          Math.min(sections.length - 1, currentIndex + direction)
+        );
+
+        if (nextIndex !== currentIndex) {
+          scrollToSection(nextIndex);
+        }
+
+        return false;
+      },
+    });
+
+    const onScroll = () => {
+      if (!isAnimating) syncCurrentIndex(lenis.scroll);
     };
+
+    lenis.on("scroll", onScroll);
+    syncCurrentIndex(lenis.scroll);
 
     const hash = window.location.hash.replace("#", "");
     if (hash) {
-      window.setTimeout(() => {
-        const target = document.getElementById(hash);
-        if (target) lenis.scrollTo(target, { immediate: true });
-      }, 100);
+      const index = SECTION_IDS.indexOf(hash);
+      if (index >= 0) {
+        window.setTimeout(() => scrollToSection(index), 50);
+      }
     }
 
-    window.addEventListener("wheel", onWheel, { passive: false });
-    document.addEventListener("click", onClick);
-
     return () => {
-      cancelAnimationFrame(rafId);
-      if (wheelTimeout) clearTimeout(wheelTimeout);
-      window.removeEventListener("wheel", onWheel);
-      document.removeEventListener("click", onClick);
+      lenis.off("scroll", onScroll);
       lenis.destroy();
     };
   }, []);
