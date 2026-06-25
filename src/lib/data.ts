@@ -22,6 +22,39 @@ export const INTRO_PARAGRAPHS = [
   "I like to build things for people, stay creative, and have a passion for code quality and shipping products that are useful to others.",
 ];
 
+export type IntroPhoto = {
+  src: string;
+  alt: string;
+  badge?: string;
+  index?: string;
+  title?: string;
+  caption?: string;
+};
+
+export const INTRO_PHOTOS = {
+  primary: {
+    src: "/photos/headshot.png",
+    alt: `${NAME} professional headshot`,
+    badge: "Full Stack Dev",
+  },
+  secondary: [
+    {
+      src: "/photos/graduation.png",
+      alt: `${NAME} at graduation`,
+      index: "01",
+      title: "Graduation Day",
+      caption: "Celebrating the milestone.",
+    },
+    {
+      src: "/photos/outdoor.png",
+      alt: `${NAME} portrait outdoors`,
+      index: "02",
+      title: "Off the clock",
+      caption: "Recharging away from the keyboard.",
+    },
+  ] satisfies IntroPhoto[],
+};
+
 export const PROJECTS_INTRO =
   "From AI agents that automate complex workflows to full-stack platforms that scale. Here's what I've been building.";
 
