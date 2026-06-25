@@ -59,7 +59,7 @@ export function IntroGallery() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.15 }}
-      className="relative mx-auto h-[240px] w-full min-w-0 max-w-[320px] overflow-visible sm:h-[300px] sm:max-w-[360px] md:h-[420px] md:max-w-[380px] lg:h-[480px] lg:max-w-[400px]"
+      className="relative mx-auto h-[240px] w-full max-w-[320px] overflow-visible sm:h-[300px] sm:max-w-[360px] md:h-[420px] md:w-[380px] md:max-w-[380px] lg:h-[480px] lg:w-[400px] lg:max-w-[400px]"
     >
       <div className="absolute right-0 top-0 z-10 w-[74%] rotate-[2deg] transition-transform duration-500 hover:z-30 hover:rotate-0">
         <PhotoCard photo={INTRO_PHOTOS.primary} priority />

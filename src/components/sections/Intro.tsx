@@ -9,15 +9,15 @@ export function Intro() {
   return (
     <section
       id="intro"
-      className="snap-section relative flex min-h-dvh items-center overflow-visible px-5 pt-24 pb-16 sm:px-8 sm:pt-28 sm:pb-20"
+      className="snap-section relative flex min-h-dvh items-start overflow-visible px-5 pt-24 pb-16 sm:px-8 sm:pt-28 sm:pb-20 md:items-center"
     >
-      <div className="content-cap relative z-10 grid w-full min-w-0 grid-cols-[minmax(0,1fr)_minmax(130px,38%)] items-center gap-5 overflow-visible sm:gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:gap-12 lg:gap-16">
-        <div className="min-w-0">
+      <div className="content-cap relative z-10 grid w-full min-w-0 grid-cols-1 items-center gap-y-8 overflow-visible md:grid-cols-[minmax(0,1fr)_380px] md:gap-x-12 md:gap-y-0 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-x-16">
+        <div className="min-w-0 w-full">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-6 text-xs uppercase tracking-[0.25em] accent sm:text-sm"
+            className="mb-5 max-w-full text-[0.65rem] uppercase leading-snug tracking-[0.14em] accent sm:mb-6 sm:text-xs sm:tracking-[0.2em] md:text-sm md:tracking-[0.25em]"
           >
             [ {ROLE} ]
           </motion.p>
@@ -26,7 +26,7 @@ export function Intro() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05 }}
-            className="font-sans text-5xl font-semibold leading-[0.95] tracking-tight sm:text-6xl md:text-7xl"
+            className="w-full font-sans text-[2.35rem] font-semibold leading-[0.92] tracking-tight min-[380px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
           >
             <span className="text-gradient">
               <Scramble text="Shuhayb" />
@@ -50,7 +50,7 @@ export function Intro() {
           </motion.div>
         </div>
 
-        <div className="min-w-0 shrink-0 overflow-visible">
+        <div className="mx-auto w-full max-w-[320px] shrink-0 overflow-visible sm:max-w-[360px] md:mx-0 md:w-[380px] md:max-w-none lg:w-[400px]">
           <IntroGallery />
         </div>
       </div>

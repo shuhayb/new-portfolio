@@ -5,7 +5,13 @@ import React from "react";
 
 export function ProviderTheme({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="light"
+      enableSystem={false}
+      storageKey="portfolio-theme"
+      disableTransitionOnChange
+    >
       {children}
     </ThemeProvider>
   );

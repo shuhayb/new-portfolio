@@ -80,15 +80,18 @@ export function Header() {
           >
             <div className="flex items-center justify-between">
               <Logo className="text-2xl" />
-              <button
-                className="flex h-9 w-9 items-center justify-center"
-                aria-label="close menu"
-                onClick={() => setOpen(false)}
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
-                  <path d="M6 6l12 12M18 6L6 18" />
-                </svg>
-              </button>
+              <div className="flex items-center gap-1">
+                <ThemeSwitch />
+                <button
+                  className="flex h-9 w-9 touch-manipulation items-center justify-center"
+                  aria-label="close menu"
+                  onClick={() => setOpen(false)}
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                  </svg>
+                </button>
+              </div>
             </div>
             <nav className="flex flex-1 flex-col items-center justify-center gap-8">
               {NAV_LINKS.map((link, i) => (
@@ -99,7 +102,7 @@ export function Header() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.08 * i + 0.1 }}
-                  className="font-sans text-3xl lowercase tracking-tight transition-colors hover:text-accent-dark dark:hover:text-accent-light"
+                  className="font-sans text-3xl lowercase tracking-tight text-text-light transition-colors hover:text-accent-dark dark:text-text-dark dark:hover:text-accent-light"
                 >
                   {link.label}
                 </motion.a>

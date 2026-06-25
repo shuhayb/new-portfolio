@@ -18,7 +18,7 @@ export function ThemeSwitch() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:text-accent-dark dark:hover:text-accent-light"
+      className="relative z-[60] flex h-9 w-9 touch-manipulation items-center justify-center rounded-full transition-colors hover:text-accent-dark dark:hover:text-accent-light"
       aria-label="toggle theme"
     >
       {isDark ? (
