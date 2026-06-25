@@ -54,7 +54,7 @@ export function Intro() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25, ease: introEase }}
-          className="col-span-full mt-2 w-full text-center text-xs tracking-[0.18em] text-secondary-light dark:text-secondary-dark sm:mt-4"
+          className="col-span-full mt-7 w-full text-center text-xs tracking-[0.18em] text-secondary-light dark:text-secondary-dark sm:mt-9"
         >
           [ scroll to explore ]
         </motion.a>
