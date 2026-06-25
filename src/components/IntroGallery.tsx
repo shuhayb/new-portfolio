@@ -2,18 +2,16 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { INTRO_PHOTOS } from "@/lib/data";
+import { INTRO_PHOTOS, type IntroPhoto } from "@/lib/data";
 
 function PhotoTile({
-  src,
-  alt,
+  photo,
   priority = false,
   className = "",
   sizes,
   objectPosition = "center",
 }: {
-  src: string;
-  alt: string;
+  photo: IntroPhoto;
   priority?: boolean;
   className?: string;
   sizes: string;
@@ -21,11 +19,11 @@ function PhotoTile({
 }) {
   return (
     <div
-      className={`group relative min-h-0 overflow-hidden rounded-2xl border border-text-light/10 shadow-lg shadow-accent-dark/10 dark:border-text-dark/15 dark:shadow-black/30 ${className}`}
+      className={`group relative h-full w-full overflow-hidden rounded-2xl border border-text-light/10 bg-text-light/5 shadow-lg shadow-accent-dark/10 dark:border-text-dark/15 dark:bg-text-dark/5 dark:shadow-black/30 [&>span]:relative [&>span]:block [&>span]:h-full [&>span]:w-full ${className}`}
     >
       <Image
-        src={src}
-        alt={alt}
+        src={photo.src}
+        alt={photo.alt}
         fill
         priority={priority}
         sizes={sizes}
@@ -41,24 +39,20 @@ export function IntroGallery() {
 
   return (
     <motion.div
-      initial={{ y: 12 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.7, delay: 0.15 }}
-      className="grid h-[260px] w-full grid-cols-[1.05fr_0.95fr] gap-2.5 sm:h-[300px] sm:gap-3 md:h-[380px] lg:h-[420px]"
+      initial={false}
+      className="grid h-[260px] w-full grid-cols-[1.05fr_0.95fr] items-stretch gap-2.5 sm:h-[300px] sm:gap-3 md:h-[380px] lg:h-[420px]"
     >
       <PhotoTile
-        src={INTRO_PHOTOS.primary.src}
-        alt={INTRO_PHOTOS.primary.alt}
+        photo={INTRO_PHOTOS.primary}
         priority
         sizes="(max-width: 768px) 45vw, 240px"
         className="-rotate-2 transition-transform duration-500 hover:rotate-0"
       />
 
-      <div className="grid min-h-0 grid-rows-2 gap-2.5 sm:gap-3">
+      <div className="grid h-full min-h-0 grid-rows-2 gap-2.5 sm:gap-3">
         {first ? (
           <PhotoTile
-            src={first.src}
-            alt={first.alt}
+            photo={first}
             sizes="(max-width: 768px) 40vw, 200px"
             objectPosition="center 22%"
             className="rotate-2 transition-transform duration-500 hover:rotate-0"
@@ -66,8 +60,7 @@ export function IntroGallery() {
         ) : null}
         {second ? (
           <PhotoTile
-            src={second.src}
-            alt={second.alt}
+            photo={second}
             sizes="(max-width: 768px) 40vw, 200px"
             className="-rotate-1 transition-transform duration-500 hover:rotate-0"
           />

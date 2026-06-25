@@ -25,21 +25,29 @@ export const INTRO_PARAGRAPHS = [
 export type IntroPhoto = {
   src: string;
   alt: string;
+  width: number;
+  height: number;
 };
 
 export const INTRO_PHOTOS = {
   primary: {
     src: "/photos/headshot.png",
     alt: `${NAME} professional headshot`,
+    width: 978,
+    height: 1024,
   },
   secondary: [
     {
       src: "/photos/graduation.png",
       alt: `${NAME} at graduation`,
+      width: 768,
+      height: 1024,
     },
     {
       src: "/photos/outdoor.png",
       alt: `${NAME} portrait outdoors`,
+      width: 768,
+      height: 1024,
     },
   ] satisfies IntroPhoto[],
 };
